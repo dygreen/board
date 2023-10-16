@@ -1,0 +1,17 @@
+@import '../../style/color';
+
+.header {
+  width: 100%;
+  background-color: $primary-color;
+}
+
+.container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1256px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
