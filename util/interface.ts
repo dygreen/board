@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 
 export interface ArticleItemFlag {
-  _id: ObjectId;
+  _id: string;
   title: string;
   content: string;
   regDate: string;

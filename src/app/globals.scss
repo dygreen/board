@@ -1,13 +1,8 @@
 @import '../../style/color';
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 * {
-  font-family: 'Pretendard-Regular';
+  font-family: 'Noto Sans KR';
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -19,12 +14,11 @@ html,
 body {
   width: 100%;
   height: 100%;
-  background-color: $white-color;
   word-break: keep-all;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  font-weight: 300;
+  font-weight: 100;
   overflow-x: hidden;
 }
 
@@ -74,5 +68,48 @@ svg {
   }
   &-2xl {
     font-size: 1.5rem;
+  }
+}
+
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-left {
+    text-align: left;
+  }
+}
+
+main {
+  width: 100%;
+  max-width: 1256px;
+  margin: 0 auto;
+  padding: 24px 60px;
+}
+
+.article-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  grid-gap: 24px;
+}
+
+article {
+  padding: 24px 20px;
+  background-color: $grey-color;
+  border-radius: 4px;
+  color: $grey-text-color;
+
+  h4 {
+    font-weight: 500;
+    font-size: 1.125rem;
+    span {
+      font-weight: 100;
+      font-size: 0.875rem;
+      padding-left: 8px;
+    }
   }
 }
