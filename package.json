@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "export PORT=3001 && next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,6 +17,7 @@
     "@types/mongodb": "^4.0.7",
     "mongodb": "^6.1.0",
     "next": "13.5.4",
+    "next-auth": "^4.24.3",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.69.3"
