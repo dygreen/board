@@ -9,6 +9,7 @@ import LoginBtn from '../../components/LoginBtn';
 
 export default async function Header() {
   // server component 에서 로그인된 유저 정보 출력
+  // @ts-ignore
   const session = await getServerSession(authOptions);
 
   return (
