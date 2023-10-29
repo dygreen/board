@@ -1,31 +1,11 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
 import { ArticleItemFlag } from '../util/interface';
 
-export default function ArticleItem() {
-  const [article, setArticle] = useState<ArticleItemFlag[]>([]);
-
-  // 게시글 리스트 조회
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch('/api/board/article', { method: 'GET' });
-        if (res.status === 200) {
-          const data = await res.json();
-          setArticle(data);
-        };
-      } catch (error) {
-        console.warn(error);
-      }
-    })();
-  },[])
-
+export default async function ArticleItem({article}: any) {
   return (
     <div className='article-container'>
       {
         article.length > 0 ?
-        article.map(data => (
+        article.map((data: ArticleItemFlag) => (
           <article key={data._id.toString()}>
             <h4>{data.userName} <span>{data.regDate}</span></h4>
             <p>{data.title}</p>
