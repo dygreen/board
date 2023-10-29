@@ -17,6 +17,6 @@ export default async function Home() {
   const article: ArticleItemFlag[] = await getData();
 
   return (
-    <ArticleItem article={article as ArticleItemFlag[]}/>
+    <ArticleItem article={article}/>
   )
 }
