@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArticleItemFlag } from '../util/interface';
 
 export default async function ArticleItem({article}: any) {
@@ -7,8 +8,10 @@ export default async function ArticleItem({article}: any) {
         article.length > 0 ?
         article.map((data: ArticleItemFlag) => (
           <article key={data._id.toString()}>
-            <h4>{data.userName} <span>{data.regDate}</span></h4>
-            <p>{data.title}</p>
+            <p>{data.userName} <span>{data.regDate}</span></p>
+            <Link href={`/detail/${data._id.toString()}`}>
+              <h4>{data.title}</h4>
+            </Link>
             <p>{data.content}</p>
           </article>
         )) :

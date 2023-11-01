@@ -104,13 +104,17 @@ article {
   border-radius: 4px;
   color: $grey-text-color;
 
+  span {
+    font-weight: 100;
+    font-size: 0.875rem;
+    padding-left: 8px;
+  }
+
   h4 {
     font-weight: 500;
     font-size: 1.125rem;
-    span {
-      font-weight: 100;
-      font-size: 0.875rem;
-      padding-left: 8px;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

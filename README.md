@@ -9,8 +9,9 @@
 <br/>
 
 ## _Service Info_
-: Client / Server API 구현
+: Client / Serverless API 구현
 - 게시글 리스트 조회/등록
+- 게시글 상세 페이지 (`Dynamic Routes`)
 - `next-auth` 를 이용한 로그인/회원가입 기능 
   - Github 소셜 로그인
   - next-auth JWT 로그인
