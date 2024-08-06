@@ -2,7 +2,7 @@
 
 import { useFormik } from "formik"
 import * as Yup from 'yup';
-import * as VALIDATION from '../../../util/validation'
+import * as VALIDATION from '@util/validation'
 import { useRouter } from "next/navigation";
 
 export default function Register() {

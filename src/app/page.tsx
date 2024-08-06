@@ -1,5 +1,5 @@
 import ArticleItem from "../../components/ArticleItem";
-import { ArticleItemFlag } from "../../util/interface";
+import { ArticleItemFlag } from "@util/interface";
 
 export default async function Home() {
   // 게시글 리스트 조회

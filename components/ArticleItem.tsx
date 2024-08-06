@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArticleItemFlag } from '../util/interface';
+import { ArticleItemFlag } from '@util/interface';
 
 export default async function ArticleItem({article}: any) {
   return (
