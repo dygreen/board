@@ -17,7 +17,7 @@
     "@types/mongodb": "^4.0.7",
     "bcrypt": "^5.1.1",
     "formik": "^2.4.5",
-    "mongodb": "^6.1.0",
+    "mongodb": "^6.8.0",
     "next": "13.5.4",
     "next-auth": "^4.24.3",
     "react": "^18",
