@@ -1,8 +1,12 @@
 import { connectDB } from '@util/database'
 import { NextRequest, NextResponse } from 'next/server'
+import { getServerSession } from '@node_modules/next-auth'
+import { authOptions } from '@pages/api/auth/[...nextauth]'
 
 async function addArticle(req: NextRequest, res: NextResponse) {
     const db = (await connectDB).db('board')
+    // @ts-ignore
+    const session = await getServerSession(authOptions)
 
     try {
         const formData = await req.formData()
@@ -23,7 +27,7 @@ async function addArticle(req: NextRequest, res: NextResponse) {
             title,
             content,
             regDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`,
-            userName: 'test account',
+            userName: session?.user?.name,
         }
 
         await db.collection('article').insertOne(item)
