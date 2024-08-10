@@ -2,17 +2,24 @@
 
 > [개인 프로젝트] 2023.10 ~  <br/> 
 >
-> : 게시판 서비스
+> : 게시판 서비스 ( Client / Serverless API 구현 )
 >
 > <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.Js&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=mongodb&logoColor=white"> 
+
+## _Refactoring_
+[2024.08 ~ ]
+- API App Router 방식으로 변경
+- 프로젝트 기능 추가
 
 <br/>
 
 ## _Service Info_
-: Client / Serverless API 구현
-- 게시글 리스트 조회/등록
+- 게시글 리스트
+  - 조회
+  - 등록 (`middleware` 활용해 로그인한 사용자만 등록할 수 있도록 컨트롤)
 - 게시글 상세 페이지 (`Dynamic Routes`)
-- `next-auth` 를 이용한 로그인/회원가입 기능 
+- 로그인 기능 (`next-auth`)
   - Github 소셜 로그인
   - next-auth JWT 로그인
-  - 회원가입 : `formik`, `Yup` 라이브러리 사용
+- 회왼가입 기능
+  - 정규식 검사 : `formik`, `Yup` 라이브러리 사용
