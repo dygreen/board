@@ -44,25 +44,23 @@ export default function Register() {
             email: '',
             password: '',
         },
-        onSubmit: (values: any) => {
-            fetch('/api/auth/signUp', {
-                method: 'POST',
-                body: JSON.stringify(values),
-            })
-                .then((res) => {
-                    if (res.status === 200) {
-                        // 회원가입 성공 시 : 메인 화면으로
-                        return res.json().then((data) => {
-                            alert(data)
-                            router.push('/')
-                        })
-                    } else if (res.status === 500) {
-                        return res.json().then((data) => alert(data))
-                    } else {
-                        throw new Error('Unexpected response status')
-                    }
+        onSubmit: async (values: any) => {
+            try {
+                const response = await fetch('/api/auth/signUp', {
+                    method: 'POST',
+                    body: JSON.stringify(values),
                 })
-                .catch((error) => console.error('Error : ', error))
+                if (response.status === 200) {
+                    const data = await response.json()
+                    alert(data.message)
+                    router.push('/')
+                } else if (response.status === 500) {
+                    const data = await response.json()
+                    alert(data.message)
+                }
+            } catch (e) {
+                console.error(e)
+            }
         },
     })
 
