@@ -1,4 +1,4 @@
-import { connectDB } from "../../../../util/database";
+import { connectDB } from "@util/database";
 import { ObjectId } from "mongodb";
 import { notFound } from "next/navigation"
 

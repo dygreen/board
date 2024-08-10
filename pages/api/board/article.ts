@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { connectDB } from '../../../util/database';
+import { connectDB } from '@util/database';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const db = (await connectDB).db('board');
