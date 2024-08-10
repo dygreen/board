@@ -4,7 +4,9 @@ import { NextResponse } from 'next/server'
 async function getArticle() {
     try {
         const db = (await connectDB).db('board')
-        return await db.collection('article').find().toArray()
+        const response = await db.collection('article').find().toArray()
+
+        return NextResponse.json(response)
     } catch (e) {
         console.error(e)
     }
@@ -12,8 +14,7 @@ async function getArticle() {
 
 export async function GET() {
     try {
-        const response = await getArticle()
-        return NextResponse.json(response)
+        return await getArticle()
     } catch (e) {
         console.error(e)
     }

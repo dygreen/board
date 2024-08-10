@@ -7,10 +7,9 @@ export default async function Home() {
         try {
             const res = await fetch(
                 `${process.env.BASE_URL}/api/board/get-article`,
+                { cache: 'no-store' },
             )
-            const data = await res.json()
-
-            return data
+            return await res.json()
         } catch (error) {
             console.error(error)
         }
