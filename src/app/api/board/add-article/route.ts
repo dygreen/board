@@ -1,14 +1,16 @@
 import { connectDB } from '@util/database'
-import { NextResponse } from 'next/server'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 
-async function addArticle(req: NextApiRequest, res: NextApiResponse) {
+async function addArticle(req: NextRequest, res: NextResponse) {
     const db = (await connectDB).db('board')
 
     try {
-        const body = await req.body()
+        const formData = await req.formData()
+        const title = formData.get('title')
+        const content = formData.get('content')
+
         // 제목 / 내용 빈칸일 경우 에러
-        if (!body.title || !body.content) {
+        if (!title || !content) {
             return NextResponse.json(
                 { message: '내용을 작성해주세요.' },
                 { status: 400 },
@@ -18,27 +20,28 @@ async function addArticle(req: NextApiRequest, res: NextApiResponse) {
         // DB 에러 예외 처리
         const date = new Date()
         const item = {
-            ...body,
+            title,
+            content,
             regDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`,
             userName: 'test account',
         }
 
-        return await db.collection('article').insertOne(item)
+        await db.collection('article').insertOne(item)
+
+        // 성공 시 메인 페이지로 이동
+        return NextResponse.redirect(`${req.nextUrl.origin}/`, 302)
     } catch (e) {
-        console.error(e)
+        return NextResponse.json(
+            { message: '회원 가입 중 오류가 발생했습니다.' },
+            { status: 500 },
+        )
     }
 }
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: NextRequest, res: NextResponse) {
     try {
-        await addArticle(req, res)
-        // 성공 시 메인 페이지로 이동
-        return NextResponse.redirect('/', 302)
+        return await addArticle(req, res)
     } catch (e) {
         console.error(e)
-        return NextResponse.json(
-            { message: 'Error creating article' },
-            { status: 500 },
-        )
     }
 }
