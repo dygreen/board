@@ -5,4 +5,5 @@ export interface ArticleItemFlag extends WithId<Document> {
     content: string
     regDate: string
     userName: string
+    modDate?: string
 }

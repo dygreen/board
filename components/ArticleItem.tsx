@@ -26,6 +26,9 @@ export default async function ArticleItem({
                                 className="modify-icon"
                             />
                         </Link>
+                        {article.modDate && (
+                            <span>편집됨 ({article.modDate})</span>
+                        )}
                     </article>
                 ))
             ) : (
