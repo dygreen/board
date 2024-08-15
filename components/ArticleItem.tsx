@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { ArticleItemFlag } from '@util/interface'
+import { faPenToSquare } from '@node_modules/@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@node_modules/@fortawesome/react-fontawesome'
 
 export default async function ArticleItem({
     articles,
@@ -18,6 +20,12 @@ export default async function ArticleItem({
                             <h4>{article.title}</h4>
                         </Link>
                         <p>{article.content}</p>
+                        <Link href={`/modify/${article._id.toString()}`}>
+                            <FontAwesomeIcon
+                                icon={faPenToSquare}
+                                className="modify-icon"
+                            />
+                        </Link>
                     </article>
                 ))
             ) : (

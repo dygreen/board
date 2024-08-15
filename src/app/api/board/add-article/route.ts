@@ -1,12 +1,11 @@
 import { connectDB } from '@util/database'
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from '@node_modules/next-auth'
-import { authOptions } from '@pages/api/auth/[...nextauth]'
+import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
 
 async function addArticle(req: NextRequest, res: NextResponse) {
     const db = (await connectDB).db('board')
-    // @ts-ignore
-    const session = await getServerSession(authOptions)
+    const session: any = await getServerSession(authOptions)
 
     try {
         const formData = await req.formData()
@@ -36,7 +35,7 @@ async function addArticle(req: NextRequest, res: NextResponse) {
         return NextResponse.redirect(`${req.nextUrl.origin}/`, 302)
     } catch (e) {
         return NextResponse.json(
-            { message: '회원 가입 중 오류가 발생했습니다.' },
+            { message: '게시글 작성 중 오류가 발생했습니다.' },
             { status: 500 },
         )
     }
