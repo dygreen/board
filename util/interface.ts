@@ -1,9 +1,8 @@
-import { ObjectId } from "mongodb";
+import { WithId } from 'mongodb'
 
-export interface ArticleItemFlag {
-  _id: string;
-  title: string;
-  content: string;
-  regDate: string;
-  userName: string;
+export interface ArticleItemFlag extends WithId<Document> {
+    title: string
+    content: string
+    regDate: string
+    userName: string
 }

@@ -2,22 +2,22 @@ import Link from 'next/link'
 import { ArticleItemFlag } from '@util/interface'
 
 export default async function ArticleItem({
-    article,
+    articles,
 }: {
-    article: ArticleItemFlag[]
+    articles: ArticleItemFlag[]
 }) {
     return (
         <div className="article-container">
-            {article.length > 0 ? (
-                article.map((data: ArticleItemFlag) => (
-                    <article key={data._id.toString()}>
+            {articles.length > 0 ? (
+                articles.map((article: ArticleItemFlag) => (
+                    <article key={article._id.toString()}>
                         <p>
-                            {data.userName} <span>{data.regDate}</span>
+                            {article.userName} <span>{article.regDate}</span>
                         </p>
-                        <Link href={`/detail/${data._id.toString()}`}>
-                            <h4>{data.title}</h4>
+                        <Link href={`/detail/${article._id.toString()}`}>
+                            <h4>{article.title}</h4>
                         </Link>
-                        <p>{data.content}</p>
+                        <p>{article.content}</p>
                     </article>
                 ))
             ) : (
