@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { connectDB } from '@util/database'
 import { ObjectId } from 'mongodb'
 
-async function deleteArticle(req: NextRequest) {
+export async function DELETE(req: NextRequest) {
     try {
         const db = (await connectDB).db('board')
         const { searchParams } = new URL(req.url)
@@ -22,13 +22,5 @@ async function deleteArticle(req: NextRequest) {
             { message: '게시글 삭제 중 오류가 발생했습니다.' },
             { status: 500 },
         )
-    }
-}
-
-export async function DELETE(req: NextRequest) {
-    try {
-        return await deleteArticle(req)
-    } catch (e) {
-        console.error(e)
     }
 }

@@ -4,7 +4,7 @@ import { getServerSession } from '@node_modules/next-auth'
 import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
 import { ObjectId } from 'mongodb'
 
-async function modifyArticle(req: NextRequest) {
+export async function POST(req: NextRequest) {
     const db = (await connectDB).db('board')
     const session: any = await getServerSession(authOptions)
 
@@ -44,13 +44,5 @@ async function modifyArticle(req: NextRequest) {
             { message: '게시글 수정 중 오류가 발생했습니다.' },
             { status: 500 },
         )
-    }
-}
-
-export async function POST(req: NextRequest) {
-    try {
-        return await modifyArticle(req)
-    } catch (e) {
-        console.error(e)
     }
 }

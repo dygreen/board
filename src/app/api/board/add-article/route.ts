@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from '@node_modules/next-auth'
 import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
 
-async function addArticle(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
     const db = (await connectDB).db('board')
     const session: any = await getServerSession(authOptions)
 
@@ -38,13 +38,5 @@ async function addArticle(req: NextRequest, res: NextResponse) {
             { message: '게시글 작성 중 오류가 발생했습니다.' },
             { status: 500 },
         )
-    }
-}
-
-export async function POST(req: NextRequest, res: NextResponse) {
-    try {
-        return await addArticle(req, res)
-    } catch (e) {
-        console.error(e)
     }
 }
