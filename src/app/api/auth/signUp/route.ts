@@ -2,11 +2,10 @@ import { connectDB } from '@util/database'
 import bcrypt from 'bcrypt'
 import { NextRequest, NextResponse } from 'next/server'
 
-async function signUp(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
     const db = (await connectDB).db('board')
 
     try {
-        // Next.js App Router에서는 req.json()으로 요청 본문을 가져옵니다.
         const body = await req.json()
 
         // 중복된 이메일 체크 (유저가 보낸 이메일이 db에 있으면 회원가입 시켜주지 않게)
@@ -32,17 +31,6 @@ async function signUp(req: NextRequest, res: NextResponse) {
     } catch (error) {
         return NextResponse.json(
             { message: '회원 가입 중 오류가 발생했습니다.' },
-            { status: 500 },
-        )
-    }
-}
-
-export async function POST(req: NextRequest, res: NextResponse) {
-    try {
-        return await signUp(req, res)
-    } catch (e) {
-        return NextResponse.json(
-            { message: 'Internal Server Error' },
             { status: 500 },
         )
     }
