@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArticleItemFlag } from '@util/interface'
 import { faPenToSquare } from '@node_modules/@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@node_modules/@fortawesome/react-fontawesome'
+import DeleteBtn from '@components/DeleteBtn'
 
 export default async function ArticleItem({
     articles,
@@ -23,12 +24,13 @@ export default async function ArticleItem({
                         <Link href={`/modify/${article._id.toString()}`}>
                             <FontAwesomeIcon
                                 icon={faPenToSquare}
-                                className="modify-icon"
+                                className="article-icon"
                             />
                         </Link>
                         {article.modDate && (
                             <span>편집됨 ({article.modDate})</span>
                         )}
+                        <DeleteBtn selected={article._id.toString()} />
                     </article>
                 ))
             ) : (

@@ -50,12 +50,12 @@ export default function Register() {
                     method: 'POST',
                     body: JSON.stringify(values),
                 })
+                const data = await response.json()
+
                 if (response.status === 200) {
-                    const data = await response.json()
                     alert(data.message)
                     router.push('/')
                 } else if (response.status === 500) {
-                    const data = await response.json()
                     alert(data.message)
                 }
             } catch (e) {
