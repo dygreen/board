@@ -4,8 +4,8 @@ import styles from './header.module.scss'
 import Link from 'next/link'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
-import LogOutBtn from '@components/LogOutBtn'
-import LoginBtn from '@components/LoginBtn'
+import LogOutBtn from '@components/auth/LogOutBtn'
+import LogInBtn from '@components/auth/LogInBtn'
 
 export default async function Header() {
     // server component 에서 로그인된 유저 정보 출력
@@ -27,11 +27,11 @@ export default async function Header() {
 
                 {/* 로그인 버튼 영역 */}
                 {session ? (
-                    <span>
+                    <div>
                         {session?.user?.name} <LogOutBtn />
-                    </span>
+                    </div>
                 ) : (
-                    <LoginBtn />
+                    <LogInBtn />
                 )}
             </div>
         </header>

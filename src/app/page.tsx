@@ -1,4 +1,4 @@
-import ArticleItem from '@components/ArticleItem'
+import ArticleItem from '@components/board/ArticleItem'
 import { connectDB } from '@util/database'
 import { ArticleItemFlag } from '@util/interface'
 

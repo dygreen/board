@@ -2,13 +2,17 @@ import Link from 'next/link'
 import { ArticleItemFlag } from '@util/interface'
 import { faPenToSquare } from '@node_modules/@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@node_modules/@fortawesome/react-fontawesome'
-import DeleteBtn from '@components/DeleteBtn'
+import DeleteBtn from '@components/board/DeleteBtn'
+import { getServerSession } from '@node_modules/next-auth'
+import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
 
 export default async function ArticleItem({
     articles,
 }: {
     articles: ArticleItemFlag[]
 }) {
+    const session: any = await getServerSession(authOptions)
+
     return (
         <div className="article-container">
             {articles.length > 0 ? (
@@ -21,16 +25,26 @@ export default async function ArticleItem({
                             <h4>{article.title}</h4>
                         </Link>
                         <p>{article.content}</p>
-                        <Link href={`/modify/${article._id.toString()}`}>
-                            <FontAwesomeIcon
-                                icon={faPenToSquare}
-                                className="article-icon"
-                            />
-                        </Link>
+                        {session &&
+                            (session.user.name === article.userName ||
+                                session.user.name === 'Admin') && (
+                                <>
+                                    <Link
+                                        href={`/modify/${article._id.toString()}`}
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faPenToSquare}
+                                            className="article-icon"
+                                        />
+                                    </Link>
+                                    <DeleteBtn
+                                        selected={article._id.toString()}
+                                    />
+                                </>
+                            )}
                         {article.modDate && (
                             <span>편집됨 ({article.modDate})</span>
                         )}
-                        <DeleteBtn selected={article._id.toString()} />
                     </article>
                 ))
             ) : (

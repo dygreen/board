@@ -8,6 +8,13 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json()
 
+        if (body.name === 'Admin') {
+            return NextResponse.json(
+                { message: '관리자 계정은 등록할 수 없습니다.' },
+                { status: 500 },
+            )
+        }
+
         // 중복된 이메일 체크 (유저가 보낸 이메일이 db에 있으면 회원가입 시켜주지 않게)
         let dupliUser = await db
             .collection('user_cred')
