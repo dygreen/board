@@ -8,10 +8,10 @@ export default function LogInBtn() {
     return (
         <div>
             <button type="button" onClick={() => signIn()}>
-                로그인
+                <span>로그인</span>
             </button>
             <Link href={'/register'} className={styles.register}>
-                회원가입
+                <span>회원가입</span>
             </Link>
         </div>
     )

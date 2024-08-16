@@ -1,4 +1,4 @@
-@import '../../style/color';
+@import '@style/color';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 * {
@@ -31,10 +31,6 @@ a {
 
 ul, li {
   list-style: none;
-}
-
-p {
-  line-height: 1.5rem;
 }
 
 button {
@@ -99,26 +95,71 @@ main {
 }
 
 article {
-  padding: 24px 20px;
+  position: relative;
   background-color: $grey-color;
   border-radius: 4px;
   color: $grey-text-color;
+  border: 1px solid $grey-border-color;
+  font-weight: 100;
+  font-size: 0.875rem;
 
-  span {
-    font-weight: 100;
-    font-size: 0.875rem;
-    padding-left: 8px;
+  .top-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid $grey-border-color;
   }
 
-  h4 {
-    font-weight: 500;
-    font-size: 1.125rem;
-    &:hover {
-      text-decoration: underline;
+  .middle-content {
+    padding: 8px 12px;
+
+    h4 {
+      font-weight: 400;
+      font-size: 1rem;
+      &:hover {
+        text-decoration: underline;
+      }
     }
+
+    p {
+      margin-top: 4px;
+      line-height: 0.875rem;
+    }
+  }
+
+  .bottom-content {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    height: 20px;
+  }
+
+  .btn-box {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .article-icon {
+      color: $grey-icon-color;
+      height: 20px;
+    }
+  }
+
+  .mod-box {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
   }
 }
 
-.article-icon {
-  height: 20px;
+@media (max-width: 768px) {
+  .article-container {
+    grid-template-columns: 1fr;
+  }
 }

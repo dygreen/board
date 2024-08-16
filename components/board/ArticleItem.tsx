@@ -18,33 +18,40 @@ export default async function ArticleItem({
             {articles.length > 0 ? (
                 articles.map((article: ArticleItemFlag) => (
                     <article key={article._id.toString()}>
-                        <p>
-                            {article.userName} <span>{article.regDate}</span>
-                        </p>
-                        <Link href={`/detail/${article._id.toString()}`}>
-                            <h4>{article.title}</h4>
-                        </Link>
-                        <p>{article.content}</p>
-                        {session &&
-                            (session.user.name === article.userName ||
-                                session.user.name === 'Admin') && (
-                                <>
-                                    <Link
-                                        href={`/modify/${article._id.toString()}`}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon={faPenToSquare}
-                                            className="article-icon"
-                                        />
-                                    </Link>
-                                    <DeleteBtn
-                                        selected={article._id.toString()}
-                                    />
-                                </>
+                        <div className="top-content">
+                            <span>{article.userName}</span>
+                            <span>{article.regDate}</span>
+                        </div>
+                        <div className="middle-content">
+                            <Link href={`/detail/${article._id.toString()}`}>
+                                <h4>{article.title}</h4>
+                            </Link>
+                            <p>{article.content}</p>
+                        </div>
+                        <div className="bottom-content">
+                            {article.modDate && (
+                                <div className="mod-box">
+                                    <span>편집됨 ({article.modDate})</span>
+                                </div>
                             )}
-                        {article.modDate && (
-                            <span>편집됨 ({article.modDate})</span>
-                        )}
+                            {session &&
+                                (session.user.name === article.userName ||
+                                    session.user.name === 'Admin') && (
+                                    <div className="btn-box">
+                                        <Link
+                                            href={`/modify/${article._id.toString()}`}
+                                        >
+                                            <FontAwesomeIcon
+                                                icon={faPenToSquare}
+                                                className="article-icon"
+                                            />
+                                        </Link>
+                                        <DeleteBtn
+                                            selected={article._id.toString()}
+                                        />
+                                    </div>
+                                )}
+                        </div>
                     </article>
                 ))
             ) : (

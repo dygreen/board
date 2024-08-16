@@ -1,4 +1,4 @@
-@import '../../style/color';
+@import '@style/color';
 
 .header {
   width: 100%;
@@ -6,6 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 
 .container {
@@ -17,6 +18,9 @@
   max-width: 1256px;
   margin: 0 auto;
   padding: 0 60px;
+  span {
+    font-size: 0.875rem;
+  }
 
   button {
     color: $grey-text-color;

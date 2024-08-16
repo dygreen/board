@@ -28,7 +28,8 @@ export default async function Header() {
                 {/* 로그인 버튼 영역 */}
                 {session ? (
                     <div>
-                        {session?.user?.name} <LogOutBtn />
+                        <span>{session?.user?.name}</span>
+                        <LogOutBtn />
                     </div>
                 ) : (
                     <LogInBtn />
