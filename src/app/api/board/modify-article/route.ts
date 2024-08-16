@@ -14,8 +14,18 @@ export async function POST(req: NextRequest) {
         const content = formData.get('content')
         const regDate = formData.get('regDate')
         const _id = formData.get('_id')
+        const userName = formData.get('userName')
 
-        // 제목 / 내용 빈칸일 경우 에러
+        if (
+            session === null ||
+            (session.user.name !== userName && session.user.name !== 'Admin')
+        ) {
+            return NextResponse.json(
+                { message: '게시글 수정 권한이 없습니다.' },
+                { status: 403 },
+            )
+        }
+
         if (!title || !content) {
             return NextResponse.json(
                 { message: '내용을 작성해주세요.' },
@@ -23,7 +33,6 @@ export async function POST(req: NextRequest) {
             )
         }
 
-        // DB 에러 예외 처리
         const date = new Date()
         const item = {
             title,
@@ -37,8 +46,9 @@ export async function POST(req: NextRequest) {
             .collection('article')
             .updateOne({ _id: new ObjectId(_id as string) }, { $set: item })
 
-        // 성공 시 메인 페이지로 이동
-        return NextResponse.redirect(`${req.nextUrl.origin}/`, 302)
+        return NextResponse.json({
+            message: '게시글이 성공적으로 수정되었습니다.',
+        })
     } catch (e) {
         return NextResponse.json(
             { message: '게시글 수정 중 오류가 발생했습니다.' },

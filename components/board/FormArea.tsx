@@ -1,23 +1,45 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+import { ArticleItemFlag } from '@util/interface'
+import React from 'react'
+
 export default function FormArea({
     isModify,
     result,
 }: {
     isModify: boolean
-    result?: any
+    result?: ArticleItemFlag
 }) {
+    const router = useRouter()
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        const formData = new FormData(e.currentTarget)
+        const url = isModify
+            ? '/api/board/modify-article'
+            : '/api/board/add-article'
+
+        const response = await fetch(url, {
+            method: 'POST',
+            body: formData,
+        })
+
+        const data = await response.json()
+
+        if (response.ok) {
+            alert(data.message)
+            router.push('/')
+        } else {
+            alert(data.message || '알 수 없는 오류가 발생했습니다.')
+        }
+    }
+
     return (
         <div>
             <h4>게시글 {isModify ? '수정' : '작성'}하기</h4>
-            <form
-                action={
-                    isModify
-                        ? '/api/board/modify-article'
-                        : '/api/board/add-article'
-                }
-                method="POST"
-            >
+            <form onSubmit={handleSubmit}>
                 {isModify && (
                     <>
                         <input
@@ -29,6 +51,11 @@ export default function FormArea({
                             type="hidden"
                             name="regDate"
                             defaultValue={result?.regDate}
+                        />
+                        <input
+                            type="hidden"
+                            name="userName"
+                            defaultValue={result?.userName}
                         />
                     </>
                 )}
