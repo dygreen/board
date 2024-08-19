@@ -1,6 +1,7 @@
 import { connectDB } from '@util/database'
 import { ObjectId } from 'mongodb'
 import { notFound } from 'next/navigation'
+import styles from '@src/app/detail/[id]/detail.module.scss'
 
 export default async function Detail({ params }: { params: { id: string } }) {
     const db = (await connectDB).db('board')
@@ -14,12 +15,15 @@ export default async function Detail({ params }: { params: { id: string } }) {
     }
 
     return (
-        <div>
-            <p>
-                {result.userName} <span>{result.regDate}</span>
-            </p>
-            <h4>{result.title}</h4>
-            <p>{result.content}</p>
+        <div className={styles.article_container}>
+            <div className={styles.top_content}>
+                <span>{result.userName}</span>
+                <span>{result.regDate}</span>
+            </div>
+            <div className={styles.bottom_content}>
+                <h4>{result.title}</h4>
+                <p>{result.content}</p>
+            </div>
         </div>
     )
 }
