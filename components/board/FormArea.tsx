@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation'
 import { ArticleItemFlag } from '@util/interface'
 import React from 'react'
+import { Button, TextField } from '@mui/material'
+import '@style/form.scss'
 
 export default function FormArea({
     isModify,
@@ -31,13 +33,14 @@ export default function FormArea({
         if (response.ok) {
             alert(data.message)
             router.push('/')
+            router.refresh()
         } else {
             alert(data.message || '알 수 없는 오류가 발생했습니다.')
         }
     }
 
     return (
-        <div>
+        <div className="form-container">
             <h4>게시글 {isModify ? '수정' : '작성'}하기</h4>
             <form onSubmit={handleSubmit}>
                 {isModify && (
@@ -59,19 +62,27 @@ export default function FormArea({
                         />
                     </>
                 )}
-                <input
-                    type="text"
+                <TextField
+                    id="outlined-basic"
+                    label="title"
                     name="title"
+                    variant="outlined"
                     defaultValue={isModify ? result?.title : undefined}
                     placeholder="제목을 작성해주세요."
+                    size="small"
                 />
-                <input
-                    type="text"
+                <TextField
+                    id="outlined-basic"
+                    label="content"
                     name="content"
+                    variant="outlined"
                     defaultValue={isModify ? result?.content : undefined}
                     placeholder="내용을 작성해주세요."
+                    size="small"
                 />
-                <button type="submit">완료</button>
+                <Button variant="outlined" size="small" type="submit">
+                    완료
+                </Button>
             </form>
         </div>
     )

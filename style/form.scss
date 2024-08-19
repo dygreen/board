@@ -1,0 +1,19 @@
+@import "@style/color";
+
+.form-container {
+  h4 {
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40vw;
+
+    button {
+      width: 20%;
+    }
+  }
+}
