@@ -4,6 +4,9 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import * as VALIDATION from '@util/validation'
 import { useRouter } from 'next/navigation'
+import { Button, TextField } from '@node_modules/@mui/material'
+import React from 'react'
+import '@style/form.scss'
 
 export default function Register() {
     const router = useRouter()
@@ -65,44 +68,59 @@ export default function Register() {
     })
 
     return (
-        <div>
+        <div className="form-container">
             <h4>회원가입</h4>
 
             <form onSubmit={registerFormikObj.handleSubmit}>
-                <input
-                    type="text"
+                <TextField
+                    id="outlined-basic"
+                    label="name"
                     name="name"
+                    variant="outlined"
                     value={registerFormikObj.values.name ?? ''}
                     placeholder="이름을 입력해주세요."
                     onChange={registerFormikObj.handleChange}
+                    size="small"
+                    margin="normal"
                 />
                 {registerFormikObj.touched.name &&
                     typeof registerFormikObj.errors.name === 'string' && (
-                        <div>{registerFormikObj.errors.name}</div>
+                        <span>{registerFormikObj.errors.name}</span>
                     )}
-                <input
-                    type="text"
+                <TextField
+                    id="outlined-basic"
+                    label="email"
                     name="email"
+                    variant="outlined"
                     value={registerFormikObj.values.email ?? ''}
                     placeholder="이메일을 입력해주세요."
                     onChange={registerFormikObj.handleChange}
+                    size="small"
+                    margin="normal"
                 />
                 {registerFormikObj.touched.email &&
                     typeof registerFormikObj.errors.email === 'string' && (
-                        <div>{registerFormikObj.errors.email}</div>
+                        <span>{registerFormikObj.errors.email}</span>
                     )}
-                <input
+                <TextField
+                    id="outlined-password-input"
                     type="password"
+                    label="password"
                     name="password"
+                    variant="outlined"
                     value={registerFormikObj.values.password ?? ''}
                     placeholder="비밀번호를 입력해주세요."
                     onChange={registerFormikObj.handleChange}
+                    size="small"
+                    margin="normal"
                 />
                 {registerFormikObj.touched.password &&
                     typeof registerFormikObj.errors.password === 'string' && (
-                        <div>{registerFormikObj.errors.password}</div>
+                        <span>{registerFormikObj.errors.password}</span>
                     )}
-                <button type="submit">가입하기</button>
+                <Button variant="outlined" size="small" type="submit">
+                    가입하기
+                </Button>
             </form>
         </div>
     )

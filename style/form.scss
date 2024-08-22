@@ -9,11 +9,17 @@
   form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     width: 40vw;
+
+    span {
+      font-size: 0.813rem;
+      font-weight: 300;
+      color: $red-color;
+    }
 
     button {
       width: 20%;
+      margin-top: 20px;
     }
   }
 }

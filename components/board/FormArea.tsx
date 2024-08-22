@@ -70,6 +70,7 @@ export default function FormArea({
                     defaultValue={isModify ? result?.title : undefined}
                     placeholder="제목을 작성해주세요."
                     size="small"
+                    margin="normal"
                 />
                 <TextField
                     id="outlined-basic"
@@ -79,6 +80,7 @@ export default function FormArea({
                     defaultValue={isModify ? result?.content : undefined}
                     placeholder="내용을 작성해주세요."
                     size="small"
+                    margin="normal"
                 />
                 <Button variant="outlined" size="small" type="submit">
                     완료
