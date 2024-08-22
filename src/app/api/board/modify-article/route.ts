@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
             content,
             regDate,
             userName: session?.user?.name,
-            modDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`,
+            modDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`,
         }
 
         await db

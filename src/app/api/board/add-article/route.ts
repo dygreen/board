@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
         const item = {
             title,
             content,
-            regDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`,
+            regDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`,
             userName: session?.user?.name,
         }
 
