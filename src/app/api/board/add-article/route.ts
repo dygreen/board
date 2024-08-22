@@ -32,7 +32,9 @@ export async function POST(req: NextRequest) {
         await db.collection('article').insertOne(item)
 
         // 성공 시 메인 페이지로 이동
-        return NextResponse.redirect(`${req.nextUrl.origin}/`, 302)
+        return NextResponse.json({
+            message: '게시글이 성공적으로 등록되었습니다.',
+        })
     } catch (e) {
         return NextResponse.json(
             { message: '게시글 작성 중 오류가 발생했습니다.' },
