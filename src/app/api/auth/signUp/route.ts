@@ -16,9 +16,9 @@ export async function POST(req: NextRequest) {
         }
 
         // 중복된 이메일 체크 (유저가 보낸 이메일이 db에 있으면 회원가입 시켜주지 않게)
-        let dupliUser = await db
-            .collection('user_cred')
-            .findOne({ email: body.email })
+        let dupliUser =
+            (await db.collection('user_cred').findOne({ email: body.email })) ||
+            (await db.collection('user_cred').findOne({ email: body.name }))
 
         if (dupliUser) {
             return NextResponse.json(
