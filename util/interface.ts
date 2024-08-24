@@ -6,4 +6,5 @@ export interface ArticleItemFlag extends WithId<Document> {
     regDate: string
     userName: string
     modDate?: string
+    isBookmarked?: boolean
 }

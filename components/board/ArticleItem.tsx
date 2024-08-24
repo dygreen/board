@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import { ArticleItemFlag } from '@util/interface'
-import { faPenToSquare } from '@node_modules/@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@node_modules/@fortawesome/react-fontawesome'
 import DeleteBtn from '@components/board/DeleteBtn'
-import { getServerSession } from '@node_modules/next-auth'
 import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
+import { getServerSession } from 'next-auth'
+import BookmarkBtn from '@components/board/BookmarkBtn'
 
 export default async function ArticleItem({
     articles,
@@ -22,6 +23,7 @@ export default async function ArticleItem({
                             <span>{article.userName}</span>
                             <span>{article.regDate}</span>
                         </div>
+                        <BookmarkBtn />
                         <div className="middle-content">
                             <Link href={`/detail/${article._id.toString()}`}>
                                 <h4>{article.title}</h4>

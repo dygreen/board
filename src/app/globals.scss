@@ -94,6 +94,10 @@ main {
   grid-gap: 20px;
 }
 
+.article-icon {
+  height: 18px;
+}
+
 article {
   position: relative;
   background-color: $grey-color;
@@ -145,7 +149,6 @@ article {
 
     .article-icon {
       color: $grey-icon-color;
-      height: 20px;
     }
   }
 
@@ -155,6 +158,19 @@ article {
     display: flex;
     align-items: center;
     font-size: 0.75rem;
+  }
+}
+
+.bookmark-wrapper {
+  position: absolute;
+  transform: translateY(12px);
+  right: 12px;
+
+  .article-icon {
+    color: $grey-icon-disabled-color;
+    &.bookmarked {
+      color: $blue-color;
+    }
   }
 }
 
