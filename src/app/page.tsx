@@ -7,7 +7,7 @@ export default async function Home() {
     const articles = await db
         .collection<ArticleItemFlag>('article')
         .find()
-        .sort('regDate', 'desc')
+        .sort({ isBookmarked: -1, regDate: -1 })
         .toArray()
 
     return <ArticleItem articles={articles} />

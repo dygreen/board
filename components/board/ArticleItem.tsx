@@ -23,7 +23,10 @@ export default async function ArticleItem({
                             <span>{article.userName}</span>
                             <span>{article.regDate}</span>
                         </div>
-                        <BookmarkBtn />
+                        <BookmarkBtn
+                            selected={article._id.toString()}
+                            bookmarked={article.isBookmarked ?? false}
+                        />
                         <div className="middle-content">
                             <Link href={`/detail/${article._id.toString()}`}>
                                 <h4>{article.title}</h4>
