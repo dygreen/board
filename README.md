@@ -19,6 +19,7 @@
   - 등록 (`middleware` 활용해 로그인한 사용자만 등록할 수 있도록 컨트롤)
   - 수정 (`updateOne`) : 관리자 or 작성자만 가능
   - 삭제 (`deleteOne`, URL query string 활용) : 관리자 or 작성자만 가능
+  - 북마크 (`updateOne`) : 관리자 or 작성자만 가능
 - 게시글 상세 페이지 (`Dynamic Routes`)
 - 로그인 기능 (`next-auth`)
   - Github 소셜 로그인
