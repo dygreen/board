@@ -2,13 +2,17 @@
 
 > [개인 프로젝트] 2023.10 ~  <br/> 
 >
-> : 게시판 서비스 ( Client / Serverless API 구현 )
+> : 게시판 서비스
+> 
+> - Client / Serverless API 구현
+> 
+> 주소 : https://board-base.vercel.app
 >
 > <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.Js&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=mongodb&logoColor=white"> 
 
 ## _Refactoring_
 [2024.08 ~ ]
-- API App Router 방식으로 변경
+- **App Router** (Next.js 14)  방식으로 변경
 - 프로젝트 기능 추가
 - UI 스타일링
 
@@ -27,3 +31,4 @@
   - next-auth JWT 로그인
 - 회왼가입 기능
   - 정규식 검사 : `formik`, `Yup` 라이브러리 사용
+- 로딩중 UI : App Router `loading.js` 사용
