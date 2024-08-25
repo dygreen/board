@@ -5,7 +5,7 @@ export default function Loading() {
     return (
         <div className="loading-container">
             <Image
-                src="/images/spinner.gif"
+                src={'/images/Spinner.gif'}
                 alt="로딩중"
                 width={100}
                 height={100}
