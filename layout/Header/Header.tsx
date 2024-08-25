@@ -19,8 +19,8 @@ export default async function Header() {
                         <Image
                             src={'/images/logo.png'}
                             alt="logo"
-                            width={130}
-                            height={31}
+                            width={95}
+                            height={23}
                         />
                     </Link>
                 </h1>

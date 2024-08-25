@@ -2,7 +2,7 @@
 
 .article_container {
   position: relative;
-  height: calc(100vh - 100px);
+  height: fit-content;
   background-color: $grey-color;
   border-radius: 4px;
   color: $grey-text-color;
@@ -18,7 +18,7 @@
   }
 
   .bottom_content {
-    padding: 8px 12px;
+    padding: 8px 12px 20px;
 
     h4 {
       font-weight: 400;
