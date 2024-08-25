@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import spinner from '../../public/images/spinner.gif'
+import spinner from '@public/images/spinner.gif'
 
 export default function Loading() {
     return (
