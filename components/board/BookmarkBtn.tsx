@@ -6,11 +6,18 @@ import { faThumbTack } from '@fortawesome/free-solid-svg-icons'
 export default function BookmarkBtn({
     selected,
     bookmarked,
+    isAuthorized,
 }: {
     selected: string
     bookmarked: boolean
+    isAuthorized: boolean
 }) {
     const handleBookmarkArticle = async () => {
+        if (!isAuthorized) {
+            alert('북마크 체크 권한이 없습니다. 로그인 후 이용해주세요.')
+            return
+        }
+
         try {
             const response = await fetch('/api/board/bookmark-article', {
                 method: 'POST',
@@ -32,11 +39,15 @@ export default function BookmarkBtn({
     }
 
     return (
-        <div className="bookmark-wrapper" onClick={handleBookmarkArticle}>
+        <button
+            type="button"
+            className="bookmark-wrapper"
+            onClick={handleBookmarkArticle}
+        >
             <FontAwesomeIcon
                 icon={faThumbTack}
                 className={`article-icon ${bookmarked && 'bookmarked'}`}
             />
-        </div>
+        </button>
     )
 }
