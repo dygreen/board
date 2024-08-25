@@ -1,4 +1,4 @@
-@import '../../style/color';
+@import '@style/color';
 
 .footer {
   width: 100%;
@@ -15,19 +15,29 @@
 
   a {
     position: absolute;
-    right: 68px;
     bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
-    background-color: $primary-color;
     padding: 8px;
     border-radius: 50%;
 
-    svg {
-      height: 24px;
+    &.homeBtn {
+      left: 68px;
+      background-color: $blue-color;
+      svg {
+        height: 20px;
+      }
+    }
+
+    &.writeBtn {
+      right: 68px;
+      background-color: $primary-color;
+      svg {
+        height: 24px;
+      }
     }
   }
 }
