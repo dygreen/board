@@ -3,23 +3,22 @@
 .form-container {
   h4 {
     font-weight: 400;
-    margin-bottom: 24px;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 40vw;
-
-    span {
-      font-size: 0.813rem;
-      font-weight: 300;
-      color: $red-color;
-    }
-
-    button {
-      width: 20%;
-      margin-top: 20px;
-    }
-  }
+  //form {
+  //  display: flex;
+  //  flex-direction: column;
+  //  //width: 40vw;
+  //
+  //  span {
+  //    font-size: 0.813rem;
+  //    font-weight: 300;
+  //    color: $red-color;
+  //  }
+  //
+  //  button {
+  //    width: 20%;
+  //    margin-top: 20px;
+  //  }
+  //}
 }

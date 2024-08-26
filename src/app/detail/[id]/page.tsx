@@ -2,6 +2,11 @@ import { connectDB } from '@util/database'
 import { ObjectId } from 'mongodb'
 import { notFound } from 'next/navigation'
 import styles from '@src/app/detail/[id]/detail.module.scss'
+import dynamic from '@node_modules/next/dynamic'
+
+const ToastViewer = dynamic(() => import('@components/editor/ToastViewer'), {
+    ssr: false,
+})
 
 export default async function Detail({ params }: { params: { id: string } }) {
     const db = (await connectDB).db('board')
@@ -22,7 +27,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
             </div>
             <div className={styles.bottom_content}>
                 <h4>{result.title}</h4>
-                <p>{result.content}</p>
+                <ToastViewer content={result.content} />
             </div>
         </div>
     )

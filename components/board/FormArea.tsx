@@ -2,9 +2,14 @@
 
 import { useRouter } from 'next/navigation'
 import { ArticleItemFlag } from '@util/interface'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Button, TextField } from '@mui/material'
 import '@style/form.scss'
+import dynamic from 'next/dynamic'
+
+const ToastEditor = dynamic(() => import('@components/editor/ToastEditor'), {
+    ssr: false,
+})
 
 export default function FormArea({
     isModify,
@@ -13,12 +18,16 @@ export default function FormArea({
     isModify: boolean
     result?: ArticleItemFlag
 }) {
+    const [content, setContent] = useState(null)
+    const editorRef = useRef(null)
     const router = useRouter()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const formData = new FormData(e.currentTarget)
+        formData.append('content', content || '')
+
         const url = isModify
             ? '/api/board/modify-article'
             : '/api/board/add-article'
@@ -37,6 +46,10 @@ export default function FormArea({
         } else {
             alert(data.message || '알 수 없는 오류가 발생했습니다.')
         }
+    }
+
+    const handleSetContent = (data: any) => {
+        setContent(data)
     }
 
     return (
@@ -72,15 +85,10 @@ export default function FormArea({
                     size="small"
                     margin="normal"
                 />
-                <TextField
-                    id="outlined-basic"
-                    label="content"
-                    name="content"
-                    variant="outlined"
-                    defaultValue={isModify ? result?.content : undefined}
-                    placeholder="내용을 작성해주세요."
-                    size="small"
-                    margin="normal"
+                <ToastEditor
+                    editorRef={editorRef}
+                    onSetContent={handleSetContent}
+                    initialValue={isModify ? (result?.content as string) : ''}
                 />
                 <Button variant="outlined" size="small" type="submit">
                     완료

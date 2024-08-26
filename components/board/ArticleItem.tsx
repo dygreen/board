@@ -6,6 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { getServerSession } from 'next-auth'
 import BookmarkBtn from '@components/board/BookmarkBtn'
+import dynamic from '@node_modules/next/dynamic'
+
+const ToastViewer = dynamic(() => import('@components/editor/ToastViewer'), {
+    ssr: false,
+})
 
 export default async function ArticleItem({
     articles,
@@ -38,7 +43,7 @@ export default async function ArticleItem({
                             <Link href={`/detail/${article._id.toString()}`}>
                                 <h4>{article.title}</h4>
                             </Link>
-                            <p>{article.content}</p>
+                            <ToastViewer content={article.content} />
                         </div>
                         <div className="bottom-content">
                             {article.modDate && (
