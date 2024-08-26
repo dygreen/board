@@ -73,6 +73,11 @@ export default function FormArea({
                             name="userName"
                             defaultValue={result?.userName}
                         />
+                        <input
+                            type="hidden"
+                            name="isBookmarked"
+                            defaultValue={String(result?.isBookmarked)}
+                        />
                     </>
                 )}
                 <TextField

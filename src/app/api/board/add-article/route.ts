@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
             content,
             regDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`,
             userName: session?.user?.name,
+            isBookmarked: false,
         }
 
         await db.collection('article').insertOne(item)
