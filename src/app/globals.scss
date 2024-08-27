@@ -117,17 +117,34 @@ article {
   .middle-content {
     padding: 8px 12px;
 
+    .bookmark-wrapper {
+      position: absolute;
+      right: 12px;
+
+      .article-icon {
+        color: $grey-icon-disabled-color;
+        &.bookmarked {
+          color: $blue-color;
+        }
+      }
+    }
+
     h4 {
       width: fit-content;
       font-weight: 400;
       font-size: 1rem;
+      margin-bottom: 4px;
       &:hover {
         text-decoration: underline;
       }
     }
 
+    a {
+      display: inline-block;
+      width: fit-content;
+    }
+
     p {
-      margin-top: 4px;
       line-height: 1.2rem;
     }
   }
@@ -162,25 +179,16 @@ article {
   }
 }
 
-.bookmark-wrapper {
-  position: absolute;
-  transform: translateY(12px);
-  right: 12px;
-
-  .article-icon {
-    color: $grey-icon-disabled-color;
-    &.bookmarked {
-      color: $blue-color;
-    }
-  }
-}
-
 .toastui-editor-contents {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  p {
+    margin: 0 !important;
+  }
 }
 
 .loading-container {

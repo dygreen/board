@@ -30,7 +30,7 @@ export default function ToastEditor({
                 ['code', 'codeblock'],
             ]}
             ref={editorRef}
-            height="500px"
+            height="450px"
             initialEditType="markdown"
             previewStyle="vertical"
             usageStatistics={false}

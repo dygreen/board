@@ -28,18 +28,19 @@ export default async function ArticleItem({
                             <span>{article.userName}</span>
                             <span>{article.regDate}</span>
                         </div>
-                        <BookmarkBtn
-                            selected={article._id.toString()}
-                            bookmarked={article.isBookmarked ?? false}
-                            isAuthorized={
-                                !!(
-                                    session &&
-                                    (session.user.name === article.userName ||
-                                        session.user.name === 'Admin')
-                                )
-                            }
-                        />
                         <div className="middle-content">
+                            <BookmarkBtn
+                                selected={article._id.toString()}
+                                bookmarked={article.isBookmarked ?? false}
+                                isAuthorized={
+                                    !!(
+                                        session &&
+                                        (session.user.name ===
+                                            article.userName ||
+                                            session.user.name === 'Admin')
+                                    )
+                                }
+                            />
                             <Link href={`/detail/${article._id.toString()}`}>
                                 <h4>{article.title}</h4>
                             </Link>

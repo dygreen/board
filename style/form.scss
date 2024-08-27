@@ -5,20 +5,20 @@
     font-weight: 400;
   }
 
-  //form {
-  //  display: flex;
-  //  flex-direction: column;
-  //  //width: 40vw;
-  //
-  //  span {
-  //    font-size: 0.813rem;
-  //    font-weight: 300;
-  //    color: $red-color;
-  //  }
-  //
-  //  button {
-  //    width: 20%;
-  //    margin-top: 20px;
-  //  }
-  //}
+  form {
+    span {
+      font-size: 0.813rem;
+      font-weight: 300;
+      color: $red-color;
+    }
+
+    .submitBtn {
+      text-align: right;
+      margin-top: 8px;
+
+      button {
+        width: 140px;
+      }
+    }
+  }
 }

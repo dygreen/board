@@ -89,15 +89,18 @@ export default function FormArea({
                     placeholder="제목을 작성해주세요."
                     size="small"
                     margin="normal"
+                    fullWidth={true}
                 />
                 <ToastEditor
                     editorRef={editorRef}
                     onSetContent={handleSetContent}
                     initialValue={isModify ? (result?.content as string) : ''}
                 />
-                <Button variant="outlined" size="small" type="submit">
-                    완료
-                </Button>
+                <div className="submitBtn">
+                    <Button variant="contained" size="small" type="submit">
+                        완료
+                    </Button>
+                </div>
             </form>
         </div>
     )
