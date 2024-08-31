@@ -32,3 +32,4 @@
 - 회왼가입 기능
   - 정규식 검사 : `formik`, `Yup` 라이브러리 사용
 - 로딩중 UI : App Router `loading.js` 사용
+- 에디터 적용 (`Toast UI editor`)

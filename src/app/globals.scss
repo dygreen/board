@@ -147,6 +147,18 @@ article {
     p {
       line-height: 1.2rem;
     }
+
+    .toastui-editor-contents {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      p {
+        margin: 0 !important;
+      }
+    }
   }
 
   .bottom-content {
@@ -179,17 +191,6 @@ article {
   }
 }
 
-.toastui-editor-contents {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  p {
-    margin: 0 !important;
-  }
-}
 
 .loading-container {
   position: fixed;
