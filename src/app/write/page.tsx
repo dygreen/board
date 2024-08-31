@@ -10,5 +10,5 @@ export default async function Write() {
         redirect('/api/auth/signin')
     }
 
-    return <FormArea isModify={false} />
+    return <FormArea />
 }

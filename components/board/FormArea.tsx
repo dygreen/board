@@ -11,14 +11,8 @@ const ToastEditor = dynamic(() => import('@components/editor/ToastEditor'), {
     ssr: false,
 })
 
-export default function FormArea({
-    isModify,
-    result,
-}: {
-    isModify: boolean
-    result?: ArticleItemFlag
-}) {
-    const [content, setContent] = useState(null)
+export default function FormArea({ result }: { result?: ArticleItemFlag }) {
+    const [content, setContent] = useState(result?.content || null)
     const editorRef = useRef(null)
     const router = useRouter()
 
@@ -28,7 +22,7 @@ export default function FormArea({
         const formData = new FormData(e.currentTarget)
         formData.append('content', content || '')
 
-        const url = isModify
+        const url = result
             ? '/api/board/modify-article'
             : '/api/board/add-article'
 
@@ -54,29 +48,29 @@ export default function FormArea({
 
     return (
         <div className="form-container">
-            <h4>게시글 {isModify ? '수정' : '작성'}하기</h4>
+            <h4>게시글 {result ? '수정' : '작성'}하기</h4>
             <form onSubmit={handleSubmit}>
-                {isModify && (
+                {result && (
                     <>
                         <input
                             type="hidden"
                             name="_id"
-                            defaultValue={result?._id.toString()}
+                            defaultValue={result._id.toString()}
                         />
                         <input
                             type="hidden"
                             name="regDate"
-                            defaultValue={result?.regDate}
+                            defaultValue={result.regDate}
                         />
                         <input
                             type="hidden"
                             name="userName"
-                            defaultValue={result?.userName}
+                            defaultValue={result.userName}
                         />
                         <input
                             type="hidden"
                             name="isBookmarked"
-                            defaultValue={String(result?.isBookmarked)}
+                            defaultValue={String(result.isBookmarked)}
                         />
                     </>
                 )}
@@ -85,7 +79,7 @@ export default function FormArea({
                     label="title"
                     name="title"
                     variant="outlined"
-                    defaultValue={isModify ? result?.title : undefined}
+                    defaultValue={result?.title || undefined}
                     placeholder="제목을 작성해주세요."
                     size="small"
                     margin="normal"
@@ -94,7 +88,7 @@ export default function FormArea({
                 <ToastEditor
                     editorRef={editorRef}
                     onSetContent={handleSetContent}
-                    initialValue={isModify ? (result?.content as string) : ''}
+                    initialValue={(result?.content as string) || ''}
                 />
                 <div className="submitBtn">
                     <Button variant="contained" size="small" type="submit">

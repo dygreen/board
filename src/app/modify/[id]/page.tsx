@@ -14,5 +14,5 @@ export default async function Modify({ params }: { params: { id: string } }) {
         notFound()
     }
 
-    return <FormArea isModify={true} result={result} />
+    return <FormArea result={result} />
 }
