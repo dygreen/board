@@ -6,6 +6,7 @@ import React, { useRef, useState } from 'react'
 import { Button, TextField } from '@mui/material'
 import '@style/form.scss'
 import dynamic from 'next/dynamic'
+import { useQueryClient } from '@tanstack/react-query'
 
 const ToastEditor = dynamic(() => import('@components/editor/ToastEditor'), {
     ssr: false,
@@ -15,6 +16,7 @@ export default function FormArea({ result }: { result?: ArticleItemFlag }) {
     const [content, setContent] = useState(result?.content || null)
     const editorRef = useRef(null)
     const router = useRouter()
+    const queryClient = useQueryClient()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -35,6 +37,7 @@ export default function FormArea({ result }: { result?: ArticleItemFlag }) {
 
         if (response.ok) {
             alert(data.message)
+            queryClient.invalidateQueries({ queryKey: ['articles'] })
             router.push('/')
             router.refresh()
         } else {
