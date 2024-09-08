@@ -1,23 +1,24 @@
+'use client'
+
 import Link from 'next/link'
 import { ArticleItemFlag } from '@util/interface'
 import DeleteBtn from '@components/board/DeleteBtn'
-import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
-import { getServerSession } from 'next-auth'
 import BookmarkBtn from '@components/board/BookmarkBtn'
-import dynamic from '@node_modules/next/dynamic'
+import dynamic from 'next/dynamic'
+import { useSession } from 'next-auth/react'
 
 const ToastViewer = dynamic(() => import('@components/editor/ToastViewer'), {
     ssr: false,
 })
 
-export default async function ArticleItem({
+export default function ArticleItem({
     articles,
 }: {
     articles: ArticleItemFlag[]
 }) {
-    const session: any = await getServerSession(authOptions)
+    const { data: session }: any = useSession()
 
     return (
         <div className="article-container">

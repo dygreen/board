@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { connectDB } from '@util/database'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export const authOptions = NextAuth({
     providers: [

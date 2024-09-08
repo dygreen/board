@@ -8,7 +8,7 @@
 > 
 > 주소 : https://board-base.vercel.app
 >
-> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.Js&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=mongodb&logoColor=white"> 
+> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.Js&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
 
 ## _Refactoring_
 [2024.08 ~ ]
@@ -31,5 +31,6 @@
   - next-auth JWT 로그인
 - 회왼가입 기능
   - 정규식 검사 : `formik`, `Yup` 라이브러리 사용
+- 무한 스크롤 기능 (`react-query`)
 - 로딩중 UI : App Router `loading.js` 사용
 - 에디터 적용 (`Toast UI editor`)
