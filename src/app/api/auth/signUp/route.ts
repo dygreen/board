@@ -1,6 +1,6 @@
 import { connectDB } from '@util/database'
-import bcrypt from 'bcrypt'
 import { NextRequest, NextResponse } from 'next/server'
+import bcrypt from 'bcryptjs'
 
 export async function POST(req: NextRequest) {
     const db = (await connectDB).db('board')
