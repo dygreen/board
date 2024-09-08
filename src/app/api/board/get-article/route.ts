@@ -21,6 +21,9 @@ export async function GET(req: NextRequest) {
 
         return NextResponse.json(response)
     } catch (e) {
-        console.error(e)
+        return NextResponse.json(
+            { message: '게시글을 가져오는 중 오류가 발생했습니다.' },
+            { status: 500 },
+        )
     }
 }
