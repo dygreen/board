@@ -6,7 +6,7 @@ import React, { useRef, useState } from 'react'
 import { Button, TextField } from '@mui/material'
 import '@style/form.scss'
 import dynamic from 'next/dynamic'
-import { useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const ToastEditor = dynamic(() => import('@components/editor/ToastEditor'), {
     ssr: false,
@@ -18,31 +18,37 @@ export default function FormArea({ result }: { result?: ArticleItemFlag }) {
     const router = useRouter()
     const queryClient = useQueryClient()
 
+    const { mutate: handleFormArticle } = useMutation({
+        mutationFn: (newData: FormData) =>
+            fetch(
+                result ? '/api/board/modify-article' : '/api/board/add-article',
+                {
+                    method: 'POST',
+                    body: newData,
+                },
+            ),
+        onSuccess: async (res) => {
+            const data = await res.json()
+            if (res.status === 200) {
+                alert(data.message)
+                queryClient.invalidateQueries({ queryKey: ['articles'] })
+                router.push('/')
+            } else if (res.status === 400) {
+                alert(data.message || '알 수 없는 오류가 발생했습니다.')
+            }
+        },
+        onError: (error) => {
+            alert(error.message)
+        },
+    })
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const formData = new FormData(e.currentTarget)
         formData.append('content', content || '')
 
-        const url = result
-            ? '/api/board/modify-article'
-            : '/api/board/add-article'
-
-        const response = await fetch(url, {
-            method: 'POST',
-            body: formData,
-        })
-
-        const data = await response.json()
-
-        if (response.ok) {
-            alert(data.message)
-            queryClient.invalidateQueries({ queryKey: ['articles'] })
-            router.push('/')
-            router.refresh()
-        } else {
-            alert(data.message || '알 수 없는 오류가 발생했습니다.')
-        }
+        handleFormArticle(formData)
     }
 
     const handleSetContent = (data: any) => {

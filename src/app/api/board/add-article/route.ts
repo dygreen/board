@@ -1,7 +1,8 @@
 import { connectDB } from '@util/database'
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from '@node_modules/next-auth'
+import { getServerSession } from 'next-auth'
 import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
+import { CURR_DATE_FORMAT } from '@util/constant'
 
 export async function POST(req: NextRequest) {
     const db = (await connectDB).db('board')
@@ -20,12 +21,10 @@ export async function POST(req: NextRequest) {
             )
         }
 
-        // DB 에러 예외 처리
-        const date = new Date()
         const item = {
             title,
             content,
-            regDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`,
+            regDate: CURR_DATE_FORMAT,
             userName: session?.user?.name,
             isBookmarked: false,
         }

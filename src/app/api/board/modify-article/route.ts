@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { connectDB } from '@util/database'
-import { getServerSession } from '@node_modules/next-auth'
+import { getServerSession } from 'next-auth'
 import { authOptions } from '@src/app/api/auth/[...nextauth]/route'
 import { ObjectId } from 'mongodb'
+import { CURR_DATE_FORMAT } from '@util/constant'
 
 export async function POST(req: NextRequest) {
     const db = (await connectDB).db('board')
@@ -34,14 +35,13 @@ export async function POST(req: NextRequest) {
             )
         }
 
-        const date = new Date()
         const item = {
             title,
             content,
             regDate,
             isBookmarked: isBookmarked === 'true',
             userName: session?.user?.name,
-            modDate: `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`,
+            modDate: CURR_DATE_FORMAT,
         }
 
         await db

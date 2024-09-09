@@ -37,16 +37,11 @@ export default function Home() {
         if (inView) fetchNextPage()
     }, [inView])
 
+    if (isLoading) return <Loading />
     return (
         <>
-            {isLoading ? (
-                <Loading />
-            ) : (
-                <>
-                    <ArticleItem articles={data?.pages.flat() || []} />
-                    <div ref={ref}></div>
-                </>
-            )}
+            <ArticleItem articles={data?.pages.flat() || []} />
+            <div ref={ref}></div>
         </>
     )
 }
