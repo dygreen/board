@@ -28,7 +28,7 @@ export default function BookmarkBtn({
         onSuccess: async (res) => {
             const data = await res.json()
             if (res.status === 200) {
-                queryClient.invalidateQueries({ queryKey: ['articles'] })
+                await queryClient.invalidateQueries({ queryKey: ['articles'] })
             } else if (res.status === 500) {
                 alert(data.message || '알 수 없는 오류가 발생했습니다.')
             }

@@ -17,7 +17,7 @@ export default function DeleteBtn({ selected }: { selected: string }) {
             const data = await res.json()
             if (res.status === 200) {
                 alert(data.message)
-                queryClient.invalidateQueries({ queryKey: ['articles'] })
+                await queryClient.invalidateQueries({ queryKey: ['articles'] })
             } else if (res.status === 500) {
                 alert(data.message || '알 수 없는 오류가 발생했습니다.')
             }
