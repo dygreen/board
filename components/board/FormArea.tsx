@@ -5,12 +5,8 @@ import { ArticleItemFlag } from '@util/interface'
 import React, { useRef, useState } from 'react'
 import { Button, TextField } from '@mui/material'
 import '@style/form.scss'
-import dynamic from 'next/dynamic'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-
-const ToastEditor = dynamic(() => import('@components/editor/ToastEditor'), {
-    ssr: false,
-})
+import ToastEditor from '@components/editor/ToastEditor'
 
 export default function FormArea({ result }: { result?: ArticleItemFlag }) {
     const [content, setContent] = useState(result?.content || null)

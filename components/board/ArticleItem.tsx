@@ -6,12 +6,8 @@ import DeleteBtn from '@components/board/DeleteBtn'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import BookmarkBtn from '@components/board/BookmarkBtn'
-import dynamic from 'next/dynamic'
 import { useSession } from 'next-auth/react'
-
-const ToastViewer = dynamic(() => import('@components/editor/ToastViewer'), {
-    ssr: false,
-})
+import ToastViewer from '@components/editor/ToastViewer'
 
 export default function ArticleItem({
     articles,
