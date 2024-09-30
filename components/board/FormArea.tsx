@@ -7,6 +7,7 @@ import { Button, TextField } from '@mui/material'
 import '@style/form.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import ToastEditor from '@components/editor/ToastEditor'
+import { sAlert } from '@util/sweetAlert'
 
 export default function FormArea({ result }: { result?: ArticleItemFlag }) {
     const [content, setContent] = useState(result?.content || null)
@@ -26,15 +27,17 @@ export default function FormArea({ result }: { result?: ArticleItemFlag }) {
         onSuccess: async (res) => {
             const data = await res.json()
             if (res.status === 200) {
-                alert(data.message)
+                await sAlert.success({ text: data.message })
                 await queryClient.invalidateQueries({ queryKey: ['articles'] })
                 router.push('/')
             } else if (res.status === 400) {
-                alert(data.message || '알 수 없는 오류가 발생했습니다.')
+                await sAlert.error({
+                    text: data.message || '알 수 없는 오류가 발생했습니다.',
+                })
             }
         },
         onError: (error) => {
-            alert(error.message)
+            sAlert.error({ text: error.message })
         },
     })
 
@@ -44,7 +47,11 @@ export default function FormArea({ result }: { result?: ArticleItemFlag }) {
         const formData = new FormData(e.currentTarget)
         formData.append('content', content || '')
 
-        handleFormArticle(formData)
+        await sAlert.warning({
+            text: `게시글을 ${result ? '수정' : '등록'}하시겠습니까?`,
+            preConfirm: () => handleFormArticle(formData),
+            showCancelButton: true,
+        })
     }
 
     const handleSetContent = (data: any) => {

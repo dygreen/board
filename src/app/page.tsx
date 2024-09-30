@@ -5,6 +5,7 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import ArticleItem from '@components/board/ArticleItem'
 import { useInView } from 'react-intersection-observer'
 import Loading from '@src/app/loading'
+import { sAlert } from '@util/sweetAlert'
 
 export default function Home() {
     const [ref, inView] = useInView()
@@ -17,7 +18,7 @@ export default function Home() {
             if (response.status === 200) {
                 return data
             } else if (response.status === 500) {
-                alert(data.message)
+                await sAlert.error({ text: data.message })
             }
         } catch (e) {
             console.error(e)

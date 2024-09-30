@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { Button, TextField } from '@node_modules/@mui/material'
 import React from 'react'
 import '@style/form.scss'
+import { sAlert } from '@util/sweetAlert'
 
 export default function Register() {
     const router = useRouter()
@@ -56,10 +57,10 @@ export default function Register() {
                 const data = await response.json()
 
                 if (response.status === 200) {
-                    alert(data.message)
+                    await sAlert.success({ text: data.message })
                     router.push('/')
                 } else if (response.status === 500) {
-                    alert(data.message)
+                    await sAlert.error({ text: data.message })
                 }
             } catch (e) {
                 console.error(e)

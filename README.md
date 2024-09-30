@@ -34,3 +34,4 @@
 - 무한 스크롤 기능 (`react-query`)
 - 로딩중 UI : App Router `loading.js` 사용
 - 에디터 적용 (`Toast UI editor`)
+- alert 공통 함수 적용 (`sweetAlert2`)
