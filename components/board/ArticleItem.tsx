@@ -7,7 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import BookmarkBtn from '@components/board/BookmarkBtn'
 import { useSession } from 'next-auth/react'
-import ToastViewer from '@components/editor/ToastViewer'
+import dynamic from 'next/dynamic'
+
+const ToastViewer = dynamic(() => import('@components/editor/ToastViewer'), {
+    ssr: false,
+})
 
 export default function ArticleItem({
     articles,
