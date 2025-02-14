@@ -72,7 +72,10 @@ export default function Register() {
         <div className="form-container">
             <h4>회원가입</h4>
 
-            <form onSubmit={registerFormikObj.handleSubmit}>
+            <form
+                onSubmit={registerFormikObj.handleSubmit}
+                className="signUp-form"
+            >
                 <TextField
                     id="outlined-basic"
                     label="name"
@@ -119,9 +122,11 @@ export default function Register() {
                     typeof registerFormikObj.errors.password === 'string' && (
                         <span>{registerFormikObj.errors.password}</span>
                     )}
-                <Button variant="outlined" size="small" type="submit">
-                    가입하기
-                </Button>
+                <div className="submitBtn">
+                    <Button variant="outlined" size="small" type="submit">
+                        가입하기
+                    </Button>
+                </div>
             </form>
         </div>
     )

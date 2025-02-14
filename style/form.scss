@@ -6,6 +6,11 @@
   }
 
   form {
+    &.signUp-form {
+      display: flex;
+      flex-direction: column;
+    }
+
     span {
       font-size: 0.813rem;
       font-weight: 300;
