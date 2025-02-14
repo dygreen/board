@@ -69,6 +69,13 @@ export const authOptions = NextAuth({
             session.user = token.user
             return session
         },
+        redirect: async ({ url, baseUrl }) => {
+            // callbackUrl이 회원가입 페이지면 홈으로 리다이렉트
+            if (url === `${baseUrl}/register` || url === '/register') {
+                return baseUrl
+            }
+            return url.startsWith(baseUrl) ? url : baseUrl
+        },
     },
 
     secret: process.env.NEXTAUTH_SECRET,
