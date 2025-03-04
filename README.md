@@ -15,6 +15,7 @@
 - **App Router** (Next.js 14)  방식으로 변경
 - 프로젝트 기능 추가
 - UI 스타일링
+- [2025.03.04] 비밀번호 찾기 기능 추가
 
 <br/>
 
@@ -31,6 +32,8 @@
   - next-auth JWT 로그인
 - 회왼가입 기능
   - 정규식 검사 : `formik`, `Yup` 라이브러리 사용
+- 비밀번호 찾기 기능
+  - 현재 비밀번호 체크
 - 무한 스크롤 기능 (`react-query`)
 - 로딩중 UI : App Router `loading.js` 사용
 - 에디터 적용 (`Toast UI editor`)

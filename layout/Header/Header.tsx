@@ -7,6 +7,7 @@ import Link from 'next/link'
 import LogOutBtn from '@components/auth/LogOutBtn'
 import LogInBtn from '@components/auth/LogInBtn'
 import { useSession } from 'next-auth/react'
+import ModifyPwdBtn from '@components/auth/ModifyPwdBtn'
 
 export default function Header() {
     const { data: session } = useSession()
@@ -30,6 +31,7 @@ export default function Header() {
                     <div>
                         <span>{session?.user?.name}</span>
                         <LogOutBtn />
+                        <ModifyPwdBtn />
                     </div>
                 ) : (
                     <LogInBtn />

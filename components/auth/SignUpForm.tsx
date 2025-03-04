@@ -35,11 +35,11 @@ export default function SignUpForm() {
                 ),
             password: Yup.string()
                 .required('비밀번호를 입력해주세요.')
-                .min(4, '비밀번호를 4자 이상 입력해주세요.')
+                .min(8, '비밀번호를 8자 이상 입력해주세요.')
                 .max(20, '비밀번호를 20자 이하로 입력해주세요.')
                 .test(
                     'pwdValid',
-                    '비밀번호 형식이 올바르지 않습니다.',
+                    '비밀번호는 8~20자리여야 하며, 숫자, 문자, 특수문자를 포함해야 합니다.',
                     VALIDATION.pwdRegExp,
                 ),
         }),
@@ -78,7 +78,7 @@ export default function SignUpForm() {
             >
                 <TextField
                     id="outlined-basic"
-                    label="name"
+                    label="이름"
                     name="name"
                     variant="outlined"
                     value={registerFormikObj.values.name ?? ''}
@@ -93,7 +93,7 @@ export default function SignUpForm() {
                     )}
                 <TextField
                     id="outlined-basic"
-                    label="email"
+                    label="이메일"
                     name="email"
                     variant="outlined"
                     value={registerFormikObj.values.email ?? ''}
@@ -109,7 +109,7 @@ export default function SignUpForm() {
                 <TextField
                     id="outlined-password-input"
                     type="password"
-                    label="password"
+                    label="비밀번호"
                     name="password"
                     variant="outlined"
                     value={registerFormikObj.values.password ?? ''}
